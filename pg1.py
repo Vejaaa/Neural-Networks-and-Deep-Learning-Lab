@@ -10,7 +10,7 @@ X, y = make_moons(n_samples=500)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # Compare activation functions
-activations = ['sigmoid', 'tanh', 'relu']
+activations = ['sigmoid', 'tanh', 'relu', 'softmax']
 histories = {}
 
 for act in activations:
@@ -21,9 +21,9 @@ for act in activations:
     ])
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
     histories[act] = model.fit(X_train,
-                                y_train,
-                                validation_data=(X_test, y_test),
-                                epochs=20,
+                                y_train, 
+                                validation_data=(X_test, y_test), 
+                                epochs=20, 
                                 verbose=0).history
 
 # Plot validation accuracy
